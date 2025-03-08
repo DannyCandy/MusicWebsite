@@ -22,6 +22,9 @@ export const initializeSocket = (server) => {
 			// Gửi danh sách người dùng online cho client vừa kết nối
 			socket.emit("users_online", Array.from(userSockets.keys()));
 			// Gửi danh sách hoạt động của người dùng đến toàn bộ client
+
+			socket.emit("users_online", Array.from(userSockets.keys()));
+
 			io.emit("activities", Array.from(userActivities.entries()));
 		});
 
