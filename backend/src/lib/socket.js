@@ -19,9 +19,9 @@ export const initializeSocket = (server) => {
 
 			// broadcast to all connected sockets that this user just logged in
 			io.emit("user_connected", userId);
-
+			// Gửi danh sách người dùng online cho client vừa kết nối
 			socket.emit("users_online", Array.from(userSockets.keys()));
-
+			// Gửi danh sách hoạt động của người dùng đến toàn bộ client
 			io.emit("activities", Array.from(userActivities.entries()));
 		});
 

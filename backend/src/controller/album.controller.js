@@ -13,6 +13,7 @@ export const getAlbumById = async (req, res, next) => {
 	try {
 		const { albumId } = req.params;
 
+		//populate() để lấy thông tin chi tiết của tất cả các bài hát (songs) trong album, thay vì chỉ trả về danh sách ID.
 		const album = await Album.findById(albumId).populate("songs");
 
 		if (!album) {

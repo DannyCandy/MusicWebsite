@@ -49,6 +49,7 @@ app.use(
 
 // cron jobs
 const tempDir = path.join(process.cwd(), "tmp");
+// Chạy vào phút 0 của mỗi giờ (VD: 1:00, 2:00, 3:00, ...)
 cron.schedule("0 * * * *", () => {
 	if (fs.existsSync(tempDir)) {
 		fs.readdir(tempDir, (err, files) => {
@@ -77,7 +78,7 @@ if (process.env.NODE_ENV === "production") {
 	});
 }
 
-// error handler
+// error handler mặc định của express có 4 tham số
 app.use((err, req, res, next) => {
 	res.status(500).json({ message: process.env.NODE_ENV === "production" ? "Internal server error" : err.message });
 });

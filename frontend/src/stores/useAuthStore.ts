@@ -22,6 +22,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
 			set({ isAdmin: response.data.admin });
 		} catch (error: any) {
 			set({ isAdmin: false, error: error.response.data.message });
+			console.log("Error in checkAdminStatus - Frontend", error.response.data.message);
 		} finally {
 			set({ isLoading: false });
 		}

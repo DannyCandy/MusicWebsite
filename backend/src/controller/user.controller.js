@@ -4,6 +4,7 @@ import { Message } from "../models/message.model.js";
 export const getAllUsers = async (req, res, next) => {
 	try {
 		const currentUserId = req.auth.userId;
+		//$ne là toán tử MongoDB có nghĩa là "not equal" (không bằng).
 		const users = await User.find({ clerkId: { $ne: currentUserId } });
 		res.status(200).json(users);
 	} catch (error) {

@@ -8,7 +8,7 @@ export const getStats = async (req, res, next) => {
 			Song.countDocuments(),
 			Album.countDocuments(),
 			User.countDocuments(),
-
+			//trả về 1 mảng kiểu như: [{ "count": 3 }]
 			Song.aggregate([
 				{
 					$unionWith: {
